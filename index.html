@@ -1,398 +1,436 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Brian McKnight Live in Medan</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <!-- FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Brian McKnight Live In Medan</title>
 
-  <!-- AOS -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      scroll-behavior:smooth;
-    }
+<!-- AOS -->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
 
-    body{
-      font-family:'Poppins',sans-serif;
-      background:#050816;
-      color:white;
-      overflow-x:hidden;
-    }
+<style>
 
-    body::before{
-      content:'';
-      position:fixed;
-      inset:0;
-      background:
-      radial-gradient(circle at top left,#1f4fff33,transparent 35%),
-      radial-gradient(circle at bottom right,#ff00c833,transparent 35%);
-      z-index:-2;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
 
-    body::after{
-      content:'';
-      position:fixed;
-      inset:0;
-      backdrop-filter:blur(70px);
-      z-index:-1;
-    }
+body{
+  font-family:'Poppins',sans-serif;
+  background:#050816;
+  color:white;
+  overflow-x:hidden;
+}
 
-    section{
-      padding:90px 8%;
-      position:relative;
-    }
+/* SCROLLBAR */
+::-webkit-scrollbar{
+  width:10px;
+}
 
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-    }
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(#6d4aff,#ff00cc);
+  border-radius:20px;
+}
 
-    .hero video{
-      position:absolute;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      opacity:.18;
-    }
+/* BACKGROUND GLOW */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+  radial-gradient(circle at top left,#4f7cff33,transparent 35%),
+  radial-gradient(circle at bottom right,#ff00cc33,transparent 35%);
+  z-index:-3;
+}
 
-    .overlay{
-      position:absolute;
-      inset:0;
-      background:linear-gradient(to bottom,#00000088,#050816);
-    }
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  backdrop-filter:blur(80px);
+  z-index:-2;
+}
 
-    .hero-content{
-      position:relative;
-      z-index:2;
-      max-width:900px;
-    }
+/* NAVBAR */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:20px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:999;
+  background:#00000030;
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid #ffffff10;
+}
 
-    .tag{
-      display:inline-block;
-      padding:10px 22px;
-      border:1px solid #ffffff33;
-      border-radius:100px;
-      margin-bottom:25px;
-      background:#ffffff10;
-      backdrop-filter:blur(12px);
-      animation:floating 3s ease-in-out infinite;
-    }
+.logo{
+  font-size:1.5rem;
+  font-weight:700;
+  letter-spacing:2px;
+}
 
-    @keyframes floating{
-      0%{transform:translateY(0)}
-      50%{transform:translateY(-10px)}
-      100%{transform:translateY(0)}
-    }
+nav ul{
+  display:flex;
+  gap:30px;
+  list-style:none;
+}
 
-    h1{
-      font-size:5rem;
-      font-weight:800;
-      line-height:1;
-      background:linear-gradient(to right,#fff,#77a8ff);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      margin-bottom:20px;
-    }
+nav ul li a{
+  text-decoration:none;
+  color:white;
+  transition:.3s;
+}
 
-    .hero p{
-      font-size:1.2rem;
-      color:#d4d4d4;
-      margin-bottom:40px;
-      line-height:1.8;
-    }
+nav ul li a:hover{
+  color:#82aaff;
+}
 
-    .hero-buttons{
-      display:flex;
-      gap:20px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
+/* HERO */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  overflow:hidden;
+}
 
-    .btn{
-      padding:16px 34px;
-      border-radius:14px;
-      border:none;
-      cursor:pointer;
-      font-size:1rem;
-      font-weight:600;
-      transition:.4s;
-      text-decoration:none;
-      display:inline-block;
-    }
+.bg-video{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  top:0;
+  left:0;
+  z-index:-3;
+  opacity:.35;
+}
 
-    .btn-primary{
-      background:linear-gradient(135deg,#6d4aff,#4f7cff);
-      color:white;
-      box-shadow:0 10px 35px #5d7cff55;
-    }
+.overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom,#00000088,#050816);
+  z-index:-2;
+}
 
-    .btn-primary:hover{
-      transform:translateY(-5px) scale(1.03);
-    }
+.hero-content{
+  max-width:900px;
+  z-index:2;
+  padding:20px;
+}
 
-    .btn-outline{
-      border:1px solid #ffffff40;
-      color:white;
-      background:#ffffff10;
-      backdrop-filter:blur(10px);
-    }
+.tag{
+  display:inline-block;
+  padding:10px 22px;
+  border-radius:100px;
+  background:#ffffff10;
+  border:1px solid #ffffff20;
+  backdrop-filter:blur(10px);
+  margin-bottom:25px;
+  animation:floating 3s ease-in-out infinite;
+}
 
-    .btn-outline:hover{
-      background:white;
-      color:black;
-    }
+@keyframes floating{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+  100%{transform:translateY(0)}
+}
 
-    .countdown{
-      margin-top:60px;
-      display:flex;
-      justify-content:center;
-      gap:20px;
-      flex-wrap:wrap;
-    }
+.hero h1{
+  font-size:5rem;
+  font-weight:800;
+  line-height:1;
+  margin-bottom:25px;
+  background:linear-gradient(to right,#ffffff,#82aaff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 
-    .time-box{
-      width:120px;
-      padding:20px;
-      border-radius:20px;
-      background:#ffffff10;
-      backdrop-filter:blur(15px);
-      border:1px solid #ffffff22;
-      transition:.4s;
-    }
+.hero p{
+  color:#d6d6d6;
+  line-height:1.8;
+  margin-bottom:40px;
+  font-size:1.1rem;
+}
 
-    .time-box:hover{
-      transform:translateY(-8px);
-      background:#ffffff18;
-    }
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
 
-    .time-box h2{
-      font-size:2.3rem;
-      color:#82aaff;
-    }
+.btn{
+  padding:16px 34px;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:600;
+  transition:.4s;
+  display:inline-block;
+}
 
-    .section-title{
-      text-align:center;
-      margin-bottom:60px;
-    }
+.btn-primary{
+  background:linear-gradient(135deg,#6d4aff,#4f7cff);
+  color:white;
+  box-shadow:0 10px 30px #4f7cff55;
+}
 
-    .section-title h2{
-      font-size:3rem;
-      margin-bottom:15px;
-    }
+.btn-primary:hover{
+  transform:translateY(-5px) scale(1.05);
+}
 
-    .section-title p{
-      color:#bdbdbd;
-    }
+.btn-secondary{
+  border:1px solid #ffffff20;
+  background:#ffffff10;
+  color:white;
+  backdrop-filter:blur(10px);
+}
 
-    .ticket-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:30px;
-    }
+.btn-secondary:hover{
+  background:white;
+  color:black;
+}
 
-    .ticket-card{
-      position:relative;
-      border-radius:25px;
-      padding:35px;
-      overflow:hidden;
-      transition:.5s;
-      backdrop-filter:blur(20px);
-      border:1px solid #ffffff15;
-    }
+/* COUNTDOWN */
+.countdown{
+  margin-top:60px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
 
-    .ticket-card:hover{
-      transform:translateY(-15px) scale(1.03);
-    }
+.time-box{
+  width:120px;
+  padding:25px;
+  border-radius:24px;
+  background:#ffffff10;
+  border:1px solid #ffffff15;
+  backdrop-filter:blur(15px);
+  transition:.4s;
+}
 
-    .ticket-card::before{
-      content:'';
-      position:absolute;
-      inset:0;
-      opacity:.15;
-    }
+.time-box:hover{
+  transform:translateY(-10px);
+}
 
-    .vip::before{background:red;}
-    .platinum::before{background:#7d3cff;}
-    .gold::before{background:gold;}
-    .silver::before{background:silver;}
-    .bronze::before{background:#d47cff;}
+.time-box h2{
+  font-size:2.5rem;
+  color:#82aaff;
+}
 
-    .ticket-card h3{
-      font-size:2rem;
-      margin-bottom:10px;
-    }
+/* SECTION */
+section{
+  padding:100px 8%;
+}
 
-    .price{
-      font-size:2.5rem;
-      font-weight:800;
-      margin:20px 0;
-    }
+.section-title{
+  text-align:center;
+  margin-bottom:60px;
+}
 
-    .ticket-card ul{
-      list-style:none;
-      margin-bottom:30px;
-    }
+.section-title h2{
+  font-size:3rem;
+  margin-bottom:15px;
+}
 
-    .ticket-card li{
-      margin-bottom:12px;
-      color:#d4d4d4;
-    }
+.section-title p{
+  color:#bdbdbd;
+}
 
-    .event-info{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:30px;
-    }
+/* INFO */
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
 
-    .info-box{
-      background:#ffffff10;
-      border:1px solid #ffffff20;
-      border-radius:24px;
-      padding:40px;
-      backdrop-filter:blur(18px);
-      transition:.4s;
-    }
+.info-card{
+  padding:40px;
+  border-radius:25px;
+  background:#ffffff10;
+  border:1px solid #ffffff15;
+  backdrop-filter:blur(15px);
+  transition:.4s;
+}
 
-    .info-box:hover{
-      transform:translateY(-10px);
-    }
+.info-card:hover{
+  transform:translateY(-10px);
+}
 
-    .info-box h3{
-      margin-bottom:15px;
-      font-size:1.5rem;
-    }
+.info-card h3{
+  margin-bottom:15px;
+  font-size:1.5rem;
+}
 
-    .map{
-      overflow:hidden;
-      border-radius:25px;
-      margin-top:40px;
-      border:1px solid #ffffff15;
-    }
+/* TICKETS */
+.ticket-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
 
-    iframe{
-      width:100%;
-      height:450px;
-      border:none;
-    }
+.ticket{
+  position:relative;
+  overflow:hidden;
+  border-radius:30px;
+  padding:35px;
+  background:#ffffff10;
+  border:1px solid #ffffff15;
+  backdrop-filter:blur(18px);
+  transition:.5s;
+}
 
-    .gallery{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
-    }
+.ticket:hover{
+  transform:translateY(-15px) scale(1.03);
+}
 
-    .gallery img{
-      width:100%;
-      border-radius:20px;
-      transition:.5s;
-    }
+.ticket::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  opacity:.15;
+}
 
-    .gallery img:hover{
-      transform:scale(1.05);
-    }
+.vip::before{background:red;}
+.platinum::before{background:#7d3cff;}
+.gold::before{background:gold;}
+.silver::before{background:silver;}
+.bronze::before{background:#d47cff;}
 
-    .faq{
-      max-width:900px;
-      margin:auto;
-    }
+.ticket h3{
+  font-size:2rem;
+}
 
-    .faq-item{
-      margin-bottom:20px;
-      background:#ffffff10;
-      border-radius:20px;
-      overflow:hidden;
-      border:1px solid #ffffff15;
-    }
+.price{
+  margin:20px 0;
+  font-size:2.5rem;
+  font-weight:800;
+}
 
-    .faq-question{
-      padding:24px;
-      cursor:pointer;
-      font-weight:600;
-      position:relative;
-    }
+.ticket ul{
+  list-style:none;
+  margin-bottom:30px;
+}
 
-    .faq-answer{
-      max-height:0;
-      overflow:hidden;
-      transition:.4s;
-      padding:0 24px;
-      color:#d1d1d1;
-    }
+.ticket li{
+  margin-bottom:12px;
+  color:#d6d6d6;
+}
 
-    .faq-item.active .faq-answer{
-      max-height:300px;
-      padding:0 24px 24px;
-    }
+/* GALLERY */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
 
-    footer{
-      padding:50px 8%;
-      text-align:center;
-      border-top:1px solid #ffffff15;
-      background:#00000030;
-    }
+.gallery img{
+  width:100%;
+  border-radius:24px;
+  transition:.5s;
+  border:1px solid #ffffff15;
+}
 
-    .glow{
-      position:absolute;
-      width:400px;
-      height:400px;
-      background:#5c7cff55;
-      filter:blur(120px);
-      border-radius:50%;
-      z-index:-1;
-    }
+.gallery img:hover{
+  transform:scale(1.05);
+}
 
-    .g1{
-      top:-100px;
-      left:-100px;
-    }
+/* FAQ */
+.faq{
+  max-width:900px;
+  margin:auto;
+}
 
-    .g2{
-      bottom:-100px;
-      right:-100px;
-      background:#ff00cc33;
-    }
+.faq-item{
+  margin-bottom:20px;
+  background:#ffffff10;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid #ffffff15;
+}
 
-    @media(max-width:768px){
-      h1{
-        font-size:3rem;
-      }
+.faq-question{
+  padding:24px;
+  cursor:pointer;
+  font-weight:600;
+}
 
-      .hero p{
-        font-size:1rem;
-      }
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:.4s;
+  padding:0 24px;
+  color:#d1d1d1;
+}
 
-      .time-box{
-        width:90px;
-      }
+.faq-item.active .faq-answer{
+  max-height:300px;
+  padding:0 24px 24px;
+}
 
-      .time-box h2{
-        font-size:1.7rem;
-      }
-    }
-  </style>
+/* FOOTER */
+footer{
+  padding:60px 8%;
+  text-align:center;
+  border-top:1px solid #ffffff15;
+  background:#00000030;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  nav ul{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:3rem;
+  }
+
+  .time-box{
+    width:90px;
+    padding:20px;
+  }
+
+  .time-box h2{
+    font-size:1.8rem;
+  }
+
+}
+
+</style>
 </head>
 <body>
 
-<div class="glow g1"></div>
-<div class="glow g2"></div>
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">BRIAN MCKNIGHT</div>
+
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#tickets">Tickets</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
 
-  <video autoplay muted loop>
-    <source src="https://cdn.coverr.co/videos/coverr-stage-lights-1560087563784?download=1080p" type="video/mp4">
+  <!-- VIDEO BACKGROUND -->
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="background.mp4" type="video/mp4">
   </video>
 
   <div class="overlay"></div>
@@ -400,21 +438,22 @@
   <div class="hero-content" data-aos="zoom-in">
 
     <div class="tag">
-      JULY 12 • SELECTA CONVENTION HALL • MEDAN
+      JULY 12 2026 • MEDAN
     </div>
 
     <h1>
-      BRIAN <br> MCKNIGHT
+      BRIAN <br>
+      MCKNIGHT
     </h1>
 
     <p>
       Live In Medan Featuring Raisa.<br>
-      Experience an unforgettable romantic concert night with world-class performance and luxurious atmosphere.
+      Experience an unforgettable romantic concert night with world-class performance.
     </p>
 
-    <div class="hero-buttons">
+    <div class="buttons">
       <a href="#tickets" class="btn btn-primary">BUY TICKETS</a>
-      <a href="#about" class="btn btn-outline">EVENT DETAILS</a>
+      <a href="#about" class="btn btn-secondary">EVENT DETAILS</a>
     </div>
 
     <!-- COUNTDOWN -->
@@ -443,6 +482,7 @@
     </div>
 
   </div>
+
 </section>
 
 <!-- ABOUT -->
@@ -450,40 +490,35 @@
 
   <div class="section-title" data-aos="fade-up">
     <h2>About The Event</h2>
-    <p>Luxury music experience in the heart of Medan</p>
+    <p>Luxury concert experience in Medan</p>
   </div>
 
-  <div class="event-info">
+  <div class="info-grid">
 
-    <div class="info-box" data-aos="fade-right">
+    <div class="info-card" data-aos="fade-right">
       <h3>📍 Venue</h3>
       <p>
         Selecta Convention Hall Medan.<br><br>
-        Premium concert hall with exclusive ambiance and high-quality audio visual experience.
+        Premium concert hall with immersive audio and elegant atmosphere.
       </p>
     </div>
 
-    <div class="info-box" data-aos="fade-up">
+    <div class="info-card" data-aos="fade-up">
       <h3>🎤 Featuring</h3>
       <p>
-        Brian McKnight featuring Raisa.<br><br>
-        Romantic live performance with international stage production and immersive lighting.
+        Brian McKnight featuring Raisa with international concert production.
       </p>
     </div>
 
-    <div class="info-box" data-aos="fade-left">
-      <h3>🕘 Date</h3>
+    <div class="info-card" data-aos="fade-left">
+      <h3>🕘 Schedule</h3>
       <p>
-        July 12<br><br>
-        Doors open at 6PM WIB.<br>
-        Concert starts at 8PM WIB.
+        July 12 2026.<br><br>
+        Open Gate 6PM WIB<br>
+        Show Starts 8PM WIB
       </p>
     </div>
 
-  </div>
-
-  <div class="map" data-aos="zoom-in">
-    <iframe src="https://maps.google.com/maps?q=selecta%20convention%20hall%20medan&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
   </div>
 
 </section>
@@ -493,66 +528,74 @@
 
   <div class="section-title" data-aos="fade-up">
     <h2>Ticket Categories</h2>
-    <p>Choose your best concert experience</p>
+    <p>Choose your experience</p>
   </div>
 
   <div class="ticket-grid">
 
-    <div class="ticket-card vip" data-aos="flip-left">
+    <div class="ticket vip" data-aos="flip-left">
       <h3>VIP</h3>
       <div class="price">IDR 2.175K</div>
+
       <ul>
-        <li>✓ Front Stage Area</li>
-        <li>✓ Exclusive Access</li>
+        <li>✓ Front Stage</li>
         <li>✓ Meet & Greet</li>
-        <li>✓ Limited Seats</li>
+        <li>✓ Exclusive Access</li>
       </ul>
-      <a href="#" class="btn btn-primary">Book Now</a>
+
+      <a href="#" class="btn btn-primary">BOOK NOW</a>
     </div>
 
-    <div class="ticket-card platinum" data-aos="flip-left">
+    <div class="ticket platinum" data-aos="flip-left">
       <h3>Platinum</h3>
       <div class="price">IDR 1.700K</div>
+
       <ul>
-        <li>✓ Premium View</li>
-        <li>✓ Comfortable Area</li>
-        <li>✓ Fast Entry</li>
-        <li>✓ Exclusive Access</li>
+        <li>✓ Premium Area</li>
+        <li>✓ Comfortable View</li>
+        <li>✓ Fast Access</li>
       </ul>
-      <a href="#" class="btn btn-primary">Book Now</a>
+
+      <a href="#" class="btn btn-primary">BOOK NOW</a>
     </div>
 
-    <div class="ticket-card gold" data-aos="flip-left">
+    <div class="ticket gold" data-aos="flip-left">
       <h3>Gold</h3>
       <div class="price">IDR 1.300K</div>
+
       <ul>
-        <li>✓ Great Stage View</li>
-        <li>✓ Fast Access</li>
-        <li>✓ Comfortable Area</li>
+        <li>✓ Great View</li>
+        <li>✓ Premium Sound</li>
+        <li>✓ Fast Entry</li>
       </ul>
-      <a href="#" class="btn btn-primary">Book Now</a>
+
+      <a href="#" class="btn btn-primary">BOOK NOW</a>
     </div>
 
-    <div class="ticket-card silver" data-aos="flip-left">
+    <div class="ticket silver" data-aos="flip-left">
       <h3>Silver</h3>
       <div class="price">IDR 870K</div>
+
       <ul>
         <li>✓ Standard Area</li>
-        <li>✓ Good Sound Experience</li>
-        <li>✓ Affordable Ticket</li>
+        <li>✓ Good Audio</li>
+        <li>✓ Affordable</li>
       </ul>
-      <a href="#" class="btn btn-primary">Book Now</a>
+
+      <a href="#" class="btn btn-primary">BOOK NOW</a>
     </div>
 
-    <div class="ticket-card bronze" data-aos="flip-left">
+    <div class="ticket bronze" data-aos="flip-left">
       <h3>Bronze</h3>
       <div class="price">IDR 650K</div>
+
       <ul>
-        <li>✓ Economy Ticket</li>
         <li>✓ Festival Area</li>
         <li>✓ Entry Access</li>
+        <li>✓ Budget Friendly</li>
       </ul>
-      <a href="#" class="btn btn-primary">Book Now</a>
+
+      <a href="#" class="btn btn-primary">BOOK NOW</a>
     </div>
 
   </div>
@@ -560,52 +603,52 @@
 </section>
 
 <!-- GALLERY -->
-<section>
+<section id="gallery">
 
   <div class="section-title" data-aos="fade-up">
-    <h2>Concert Atmosphere</h2>
-    <p>Feel the magical night experience</p>
+    <h2>Concert Gallery</h2>
+    <p>Use your own images</p>
   </div>
 
   <div class="gallery">
 
-    <img data-aos="zoom-in" src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1200&auto=format&fit=crop">
-    <img data-aos="zoom-in" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1200&auto=format&fit=crop">
-    <img data-aos="zoom-in" src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1200&auto=format&fit=crop">
-    <img data-aos="zoom-in" src="https://images.unsplash.com/photo-1503095396549-807759245b35?q=80&w=1200&auto=format&fit=crop">
+    <img src="image1.jpg" data-aos="zoom-in">
+    <img src="image2.jpg" data-aos="zoom-in">
+    <img src="image3.jpg" data-aos="zoom-in">
+    <img src="image4.jpg" data-aos="zoom-in">
 
   </div>
 
 </section>
 
 <!-- FAQ -->
-<section>
+<section id="faq">
 
   <div class="section-title" data-aos="fade-up">
     <h2>Frequently Asked Questions</h2>
-    <p>Important information before attending</p>
+    <p>Important information</p>
   </div>
 
   <div class="faq">
 
     <div class="faq-item">
-      <div class="faq-question">Are tickets refundable?</div>
+      <div class="faq-question">Can I refund tickets?</div>
       <div class="faq-answer">
-        Refunds follow promoter policies if the show is canceled.
+        Refunds follow promoter policy if event is canceled.
       </div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-question">Can I buy multiple tickets?</div>
+      <div class="faq-question">Do I need ID Card?</div>
       <div class="faq-answer">
-        Maximum purchase is 5 tickets per transaction per category.
+        Yes, valid government ID is required.
       </div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-question">Do I need valid ID?</div>
+      <div class="faq-question">Maximum purchase?</div>
       <div class="faq-answer">
-        Yes, ticket names must match a valid government ID.
+        Maximum 5 tickets per transaction.
       </div>
     </div>
 
@@ -617,6 +660,7 @@
 <footer>
 
   <h2>Brian McKnight Live In Medan</h2>
+
   <br>
 
   <p>
@@ -626,7 +670,7 @@
   <br>
 
   <p style="opacity:.5">
-    © 2025 All Rights Reserved
+    © 2026 All Rights Reserved
   </p>
 
 </footer>
@@ -636,41 +680,54 @@
 
 <script>
 
+/* AOS */
 AOS.init({
   duration:1200,
   once:false
 });
 
-
-// FAQ
+/* FAQ */
 document.querySelectorAll('.faq-question').forEach(q => {
+
   q.addEventListener('click', () => {
     q.parentElement.classList.toggle('active');
   });
+
 });
 
+/* COUNTDOWN */
+const targetDate = new Date("2026-07-12T20:00:00").getTime();
 
-// COUNTDOWN
-const targetDate = new Date("July 12, 2025 20:00:00").getTime();
-
-setInterval(() => {
+const countdown = setInterval(() => {
 
   const now = new Date().getTime();
   const distance = targetDate - now;
+
+  if(distance <= 0){
+
+    clearInterval(countdown);
+
+    document.getElementById("days").innerHTML = "00";
+    document.getElementById("hours").innerHTML = "00";
+    document.getElementById("minutes").innerHTML = "00";
+    document.getElementById("seconds").innerHTML = "00";
+
+    return;
+  }
 
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  document.getElementById("days").innerHTML = days;
-  document.getElementById("hours").innerHTML = hours;
-  document.getElementById("minutes").innerHTML = minutes;
-  document.getElementById("seconds").innerHTML = seconds;
+  document.getElementById("days").innerHTML = String(days).padStart(2,'0');
+  document.getElementById("hours").innerHTML = String(hours).padStart(2,'0');
+  document.getElementById("minutes").innerHTML = String(minutes).padStart(2,'0');
+  document.getElementById("seconds").innerHTML = String(seconds).padStart(2,'0');
 
 },1000);
 
 </script>
 
 </body>
-  </html>
+</html>
