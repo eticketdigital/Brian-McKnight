@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Brian McKnight Live In Medan</title>
 
@@ -38,7 +38,7 @@ body{
   border-radius:20px;
 }
 
-/* BACKGROUND GLOW */
+/* BACKGROUND EFFECT */
 body::before{
   content:'';
   position:fixed;
@@ -60,15 +60,16 @@ body::after{
 /* NAVBAR */
 nav{
   position:fixed;
-  top:0;
   width:100%;
+  top:0;
+  left:0;
   padding:20px 8%;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  z-index:999;
-  background:#00000030;
+  background:#00000040;
   backdrop-filter:blur(15px);
+  z-index:999;
   border-bottom:1px solid #ffffff10;
 }
 
@@ -85,8 +86,8 @@ nav ul{
 }
 
 nav ul li a{
-  text-decoration:none;
   color:white;
+  text-decoration:none;
   transition:.3s;
 }
 
@@ -105,27 +106,31 @@ nav ul li a:hover{
   overflow:hidden;
 }
 
+/* VIDEO */
 .bg-video{
   position:absolute;
+  top:0;
+  left:0;
   width:100%;
   height:100%;
   object-fit:cover;
-  top:0;
-  left:0;
   z-index:-3;
-  opacity:.35;
+  opacity:0.45;
 }
 
+/* OVERLAY */
 .overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(to bottom,#00000088,#050816);
+  background:linear-gradient(to bottom,#00000099,#050816);
   z-index:-2;
 }
 
+/* CONTENT */
 .hero-content{
-  max-width:900px;
+  position:relative;
   z-index:2;
+  max-width:900px;
   padding:20px;
 }
 
@@ -148,21 +153,22 @@ nav ul li a:hover{
 
 .hero h1{
   font-size:5rem;
-  font-weight:800;
   line-height:1;
   margin-bottom:25px;
+  font-weight:800;
   background:linear-gradient(to right,#ffffff,#82aaff);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
 .hero p{
+  font-size:1.1rem;
   color:#d6d6d6;
   line-height:1.8;
   margin-bottom:40px;
-  font-size:1.1rem;
 }
 
+/* BUTTONS */
 .buttons{
   display:flex;
   justify-content:center;
@@ -176,7 +182,6 @@ nav ul li a:hover{
   text-decoration:none;
   font-weight:600;
   transition:.4s;
-  display:inline-block;
 }
 
 .btn-primary{
@@ -190,8 +195,8 @@ nav ul li a:hover{
 }
 
 .btn-secondary{
-  border:1px solid #ffffff20;
   background:#ffffff10;
+  border:1px solid #ffffff20;
   color:white;
   backdrop-filter:blur(10px);
 }
@@ -213,7 +218,7 @@ nav ul li a:hover{
 .time-box{
   width:120px;
   padding:25px;
-  border-radius:24px;
+  border-radius:25px;
   background:#ffffff10;
   border:1px solid #ffffff15;
   backdrop-filter:blur(15px);
@@ -338,8 +343,8 @@ section{
 .gallery img{
   width:100%;
   border-radius:24px;
-  transition:.5s;
   border:1px solid #ffffff15;
+  transition:.5s;
 }
 
 .gallery img:hover{
@@ -415,7 +420,10 @@ footer{
 
 <!-- NAVBAR -->
 <nav>
-  <div class="logo">BRIAN MCKNIGHT</div>
+
+  <div class="logo">
+    BRIAN MCKNIGHT
+  </div>
 
   <ul>
     <li><a href="#about">About</a></li>
@@ -423,18 +431,21 @@ footer{
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
+
 </nav>
 
 <!-- HERO -->
 <section class="hero">
 
   <!-- VIDEO BACKGROUND -->
-  <video autoplay muted loop playsinline class="bg-video">
-    <source src="background.mp4" type="video/mp4">
+  <video class="bg-video" autoplay muted loop playsinline webkit-playsinline>
+    <source src="./background.mp4" type="video/mp4">
   </video>
 
+  <!-- OVERLAY -->
   <div class="overlay"></div>
 
+  <!-- CONTENT -->
   <div class="hero-content" data-aos="zoom-in">
 
     <div class="tag">
@@ -448,12 +459,19 @@ footer{
 
     <p>
       Live In Medan Featuring Raisa.<br>
-      Experience an unforgettable romantic concert night with world-class performance.
+      Experience unforgettable romantic concert night.
     </p>
 
     <div class="buttons">
-      <a href="#tickets" class="btn btn-primary">BUY TICKETS</a>
-      <a href="#about" class="btn btn-secondary">EVENT DETAILS</a>
+
+      <a href="#tickets" class="btn btn-primary">
+        BUY TICKETS
+      </a>
+
+      <a href="#about" class="btn btn-secondary">
+        EVENT DETAILS
+      </a>
+
     </div>
 
     <!-- COUNTDOWN -->
@@ -496,27 +514,36 @@ footer{
   <div class="info-grid">
 
     <div class="info-card" data-aos="fade-right">
+
       <h3>📍 Venue</h3>
+
       <p>
         Selecta Convention Hall Medan.<br><br>
-        Premium concert hall with immersive audio and elegant atmosphere.
+        Premium concert hall with immersive atmosphere.
       </p>
+
     </div>
 
     <div class="info-card" data-aos="fade-up">
+
       <h3>🎤 Featuring</h3>
+
       <p>
-        Brian McKnight featuring Raisa with international concert production.
+        Brian McKnight featuring Raisa with world class performance.
       </p>
+
     </div>
 
     <div class="info-card" data-aos="fade-left">
+
       <h3>🕘 Schedule</h3>
+
       <p>
         July 12 2026.<br><br>
         Open Gate 6PM WIB<br>
         Show Starts 8PM WIB
       </p>
+
     </div>
 
   </div>
@@ -528,14 +555,18 @@ footer{
 
   <div class="section-title" data-aos="fade-up">
     <h2>Ticket Categories</h2>
-    <p>Choose your experience</p>
+    <p>Choose your best experience</p>
   </div>
 
   <div class="ticket-grid">
 
     <div class="ticket vip" data-aos="flip-left">
+
       <h3>VIP</h3>
-      <div class="price">IDR 2.175K</div>
+
+      <div class="price">
+        IDR 2.175K
+      </div>
 
       <ul>
         <li>✓ Front Stage</li>
@@ -543,12 +574,19 @@ footer{
         <li>✓ Exclusive Access</li>
       </ul>
 
-      <a href="#" class="btn btn-primary">BOOK NOW</a>
+      <a href="#" class="btn btn-primary">
+        BOOK NOW
+      </a>
+
     </div>
 
     <div class="ticket platinum" data-aos="flip-left">
+
       <h3>Platinum</h3>
-      <div class="price">IDR 1.700K</div>
+
+      <div class="price">
+        IDR 1.700K
+      </div>
 
       <ul>
         <li>✓ Premium Area</li>
@@ -556,12 +594,19 @@ footer{
         <li>✓ Fast Access</li>
       </ul>
 
-      <a href="#" class="btn btn-primary">BOOK NOW</a>
+      <a href="#" class="btn btn-primary">
+        BOOK NOW
+      </a>
+
     </div>
 
     <div class="ticket gold" data-aos="flip-left">
+
       <h3>Gold</h3>
-      <div class="price">IDR 1.300K</div>
+
+      <div class="price">
+        IDR 1.300K
+      </div>
 
       <ul>
         <li>✓ Great View</li>
@@ -569,12 +614,19 @@ footer{
         <li>✓ Fast Entry</li>
       </ul>
 
-      <a href="#" class="btn btn-primary">BOOK NOW</a>
+      <a href="#" class="btn btn-primary">
+        BOOK NOW
+      </a>
+
     </div>
 
     <div class="ticket silver" data-aos="flip-left">
+
       <h3>Silver</h3>
-      <div class="price">IDR 870K</div>
+
+      <div class="price">
+        IDR 870K
+      </div>
 
       <ul>
         <li>✓ Standard Area</li>
@@ -582,12 +634,19 @@ footer{
         <li>✓ Affordable</li>
       </ul>
 
-      <a href="#" class="btn btn-primary">BOOK NOW</a>
+      <a href="#" class="btn btn-primary">
+        BOOK NOW
+      </a>
+
     </div>
 
     <div class="ticket bronze" data-aos="flip-left">
+
       <h3>Bronze</h3>
-      <div class="price">IDR 650K</div>
+
+      <div class="price">
+        IDR 650K
+      </div>
 
       <ul>
         <li>✓ Festival Area</li>
@@ -595,7 +654,10 @@ footer{
         <li>✓ Budget Friendly</li>
       </ul>
 
-      <a href="#" class="btn btn-primary">BOOK NOW</a>
+      <a href="#" class="btn btn-primary">
+        BOOK NOW
+      </a>
+
     </div>
 
   </div>
@@ -607,7 +669,7 @@ footer{
 
   <div class="section-title" data-aos="fade-up">
     <h2>Concert Gallery</h2>
-    <p>Use your own images</p>
+    <p>Your own uploaded images</p>
   </div>
 
   <div class="gallery">
@@ -632,24 +694,39 @@ footer{
   <div class="faq">
 
     <div class="faq-item">
-      <div class="faq-question">Can I refund tickets?</div>
-      <div class="faq-answer">
-        Refunds follow promoter policy if event is canceled.
+
+      <div class="faq-question">
+        Can I refund tickets?
       </div>
+
+      <div class="faq-answer">
+        Refunds follow promoter policy if event canceled.
+      </div>
+
     </div>
 
     <div class="faq-item">
-      <div class="faq-question">Do I need ID Card?</div>
+
+      <div class="faq-question">
+        Do I need ID Card?
+      </div>
+
       <div class="faq-answer">
         Yes, valid government ID is required.
       </div>
+
     </div>
 
     <div class="faq-item">
-      <div class="faq-question">Maximum purchase?</div>
+
+      <div class="faq-question">
+        Maximum purchase?
+      </div>
+
       <div class="faq-answer">
         Maximum 5 tickets per transaction.
       </div>
+
     </div>
 
   </div>
@@ -659,7 +736,9 @@ footer{
 <!-- FOOTER -->
 <footer>
 
-  <h2>Brian McKnight Live In Medan</h2>
+  <h2>
+    Brian McKnight Live In Medan
+  </h2>
 
   <br>
 
