@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brian McKnight Live in Medan</title>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      inset:0;
+      background:
+      radial-gradient(circle at top left,#1f4fff33,transparent 35%),
+      radial-gradient(circle at bottom right,#ff00c833,transparent 35%);
+      z-index:-2;
+    }
+
+    body::after{
+      content:'';
+      position:fixed;
+      inset:0;
+      backdrop-filter:blur(70px);
+      z-index:-1;
+    }
+
+    section{
+      padding:90px 8%;
+      position:relative;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero video{
+      position:absolute;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:.18;
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to bottom,#00000088,#050816);
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      max-width:900px;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:10px 22px;
+      border:1px solid #ffffff33;
+      border-radius:100px;
+      margin-bottom:25px;
+      background:#ffffff10;
+      backdrop-filter:blur(12px);
+      animation:floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating{
+      0%{transform:translateY(0)}
+      50%{transform:translateY(-10px)}
+      100%{transform:translateY(0)}
+    }
+
+    h1{
+      font-size:5rem;
+      font-weight:800;
+      line-height:1;
+      background:linear-gradient(to right,#fff,#77a8ff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      font-size:1.2rem;
+      color:#d4d4d4;
+      margin-bottom:40px;
+      line-height:1.8;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:20px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:16px 34px;
+      border-radius:14px;
+      border:none;
+      cursor:pointer;
+      font-size:1rem;
+      font-weight:600;
+      transition:.4s;
+      text-decoration:none;
+      display:inline-block;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#6d4aff,#4f7cff);
+      color:white;
+      box-shadow:0 10px 35px #5d7cff55;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-5px) scale(1.03);
+    }
+
+    .btn-outline{
+      border:1px solid #ffffff40;
+      color:white;
+      background:#ffffff10;
+      backdrop-filter:blur(10px);
+    }
+
+    .btn-outline:hover{
+      background:white;
+      color:black;
+    }
+
+    .countdown{
+      margin-top:60px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .time-box{
+      width:120px;
+      padding:20px;
+      border-radius:20px;
+      background:#ffffff10;
+      backdrop-filter:blur(15px);
+      border:1px solid #ffffff22;
+      transition:.4s;
+    }
+
+    .time-box:hover{
+      transform:translateY(-8px);
+      background:#ffffff18;
+    }
+
+    .time-box h2{
+      font-size:2.3rem;
+      color:#82aaff;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:3rem;
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      color:#bdbdbd;
+    }
+
+    .ticket-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .ticket-card{
+      position:relative;
+      border-radius:25px;
+      padding:35px;
+      overflow:hidden;
+      transition:.5s;
+      backdrop-filter:blur(20px);
+      border:1px solid #ffffff15;
+    }
+
+    .ticket-card:hover{
+      transform:translateY(-15px) scale(1.03);
+    }
+
+    .ticket-card::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      opacity:.15;
+    }
+
+    .vip::before{background:red;}
+    .platinum::before{background:#7d3cff;}
+    .gold::before{background:gold;}
+    .silver::before{background:silver;}
+    .bronze::before{background:#d47cff;}
+
+    .ticket-card h3{
+      font-size:2rem;
+      margin-bottom:10px;
+    }
+
+    .price{
+      font-size:2.5rem;
+      font-weight:800;
+      margin:20px 0;
+    }
+
+    .ticket-card ul{
+      list-style:none;
+      margin-bottom:30px;
+    }
+
+    .ticket-card li{
+      margin-bottom:12px;
+      color:#d4d4d4;
+    }
+
+    .event-info{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .info-box{
+      background:#ffffff10;
+      border:1px solid #ffffff20;
+      border-radius:24px;
+      padding:40px;
+      backdrop-filter:blur(18px);
+      transition:.4s;
+    }
+
+    .info-box:hover{
+      transform:translateY(-10px);
+    }
+
+    .info-box h3{
+      margin-bottom:15px;
+      font-size:1.5rem;
+    }
+
+    .map{
+      overflow:hidden;
+      border-radius:25px;
+      margin-top:40px;
+      border:1px solid #ffffff15;
+    }
+
+    iframe{
+      width:100%;
+      height:450px;
+      border:none;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .gallery img{
+      width:100%;
+      border-radius:20px;
+      transition:.5s;
+    }
+
+    .gallery img:hover{
+      transform:scale(1.05);
+    }
+
+    .faq{
+      max-width:900px;
+      margin:auto;
+    }
+
+    .faq-item{
+      margin-bottom:20px;
+      background:#ffffff10;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid #ffffff15;
+    }
+
+    .faq-question{
+      padding:24px;
+      cursor:pointer;
+      font-weight:600;
+      position:relative;
+    }
+
+    .faq-answer{
+      max-height:0;
+      overflow:hidden;
+      transition:.4s;
+      padding:0 24px;
+      color:#d1d1d1;
+    }
+
+    .faq-item.active .faq-answer{
+      max-height:300px;
+      padding:0 24px 24px;
+    }
+
+    footer{
+      padding:50px 8%;
+      text-align:center;
+      border-top:1px solid #ffffff15;
+      background:#00000030;
+    }
+
+    .glow{
+      position:absolute;
+      width:400px;
+      height:400px;
+      background:#5c7cff55;
+      filter:blur(120px);
+      border-radius:50%;
+      z-index:-1;
+    }
+
+    .g1{
+      top:-100px;
+      left:-100px;
+    }
+
+    .g2{
+      bottom:-100px;
+      right:-100px;
+      background:#ff00cc33;
+    }
+
+    @media(max-width:768px){
+      h1{
+        font-size:3rem;
+      }
+
+      .hero p{
+        font-size:1rem;
+      }
+
+      .time-box{
+        width:90px;
+      }
+
+      .time-box h2{
+        font-size:1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<!-- HERO -->
+<section class="hero">
+
+  <video autoplay muted loop>
+    <source src="https://cdn.coverr.co/videos/coverr-stage-lights-1560087563784?download=1080p" type="video/mp4">
+  </video>
+
+  <div class="overlay"></div>
+
+  <div class="hero-content" data-aos="zoom-in">
+
+    <div class="tag">
+      JULY 12 • SELECTA CONVENTION HALL • MEDAN
+    </div>
+
+    <h1>
+      BRIAN <br> MCKNIGHT
+    </h1>
+
+    <p>
+      Live In Medan Featuring Raisa.<br>
+      Experience an unforgettable romantic concert night with world-class performance and luxurious atmosphere.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#tickets" class="btn btn-primary">BUY TICKETS</a>
+      <a href="#about" class="btn btn-outline">EVENT DETAILS</a>
+    </div>
+
+    <!-- COUNTDOWN -->
+    <div class="countdown">
+
+      <div class="time-box">
+        <h2 id="days">00</h2>
+        <span>Days</span>
+      </div>
+
+      <div class="time-box">
+        <h2 id="hours">00</h2>
+        <span>Hours</span>
+      </div>
+
+      <div class="time-box">
+        <h2 id="minutes">00</h2>
+        <span>Minutes</span>
+      </div>
+
+      <div class="time-box">
+        <h2 id="seconds">00</h2>
+        <span>Seconds</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+
+  <div class="section-title" data-aos="fade-up">
+    <h2>About The Event</h2>
+    <p>Luxury music experience in the heart of Medan</p>
+  </div>
+
+  <div class="event-info">
+
+    <div class="info-box" data-aos="fade-right">
+      <h3>📍 Venue</h3>
+      <p>
+        Selecta Convention Hall Medan.<br><br>
+        Premium concert hall with exclusive ambiance and high-quality audio visual experience.
+      </p>
+    </div>
+
+    <div class="info-box" data-aos="fade-up">
+      <h3>🎤 Featuring</h3>
+      <p>
+        Brian McKnight featuring Raisa.<br><br>
+        Romantic live performance with international stage production and immersive lighting.
+      </p>
+    </div>
+
+    <div class="info-box" data-aos="fade-left">
+      <h3>🕘 Date</h3>
+      <p>
+        July 12<br><br>
+        Doors open at 6PM WIB.<br>
+        Concert starts at 8PM WIB.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="map" data-aos="zoom-in">
+    <iframe src="https://maps.google.com/maps?q=selecta%20convention%20hall%20medan&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+  </div>
+
+</section>
+
+<!-- TICKETS -->
+<section id="tickets">
+
+  <div class="section-title" data-aos="fade-up">
+    <h2>Ticket Categories</h2>
+    <p>Choose your best concert experience</p>
+  </div>
+
+  <div class="ticket-grid">
+
+    <div class="ticket-card vip" data-aos="flip-left">
+      <h3>VIP</h3>
+      <div class="price">IDR 2.175K</div>
+      <ul>
+        <li>✓ Front Stage Area</li>
+        <li>✓ Exclusive Access</li>
+        <li>✓ Meet & Greet</li>
+        <li>✓ Limited Seats</li>
+      </ul>
+      <a href="#" class="btn btn-primary">Book Now</a>
+    </div>
+
+    <div class="ticket-card platinum" data-aos="flip-left">
+      <h3>Platinum</h3>
+      <div class="price">IDR 1.700K</div>
+      <ul>
+        <li>✓ Premium View</li>
+        <li>✓ Comfortable Area</li>
+        <li>✓ Fast Entry</li>
+        <li>✓ Exclusive Access</li>
+      </ul>
+      <a href="#" class="btn btn-primary">Book Now</a>
+    </div>
+
+    <div class="ticket-card gold" data-aos="flip-left">
+      <h3>Gold</h3>
+      <div class="price">IDR 1.300K</div>
+      <ul>
+        <li>✓ Great Stage View</li>
+        <li>✓ Fast Access</li>
+        <li>✓ Comfortable Area</li>
+      </ul>
+      <a href="#" class="btn btn-primary">Book Now</a>
+    </div>
+
+    <div class="ticket-card silver" data-aos="flip-left">
+      <h3>Silver</h3>
+      <div class="price">IDR 870K</div>
+      <ul>
+        <li>✓ Standard Area</li>
+        <li>✓ Good Sound Experience</li>
+        <li>✓ Affordable Ticket</li>
+      </ul>
+      <a href="#" class="btn btn-primary">Book Now</a>
+    </div>
+
+    <div class="ticket-card bronze" data-aos="flip-left">
+      <h3>Bronze</h3>
+      <div class="price">IDR 650K</div>
+      <ul>
+        <li>✓ Economy Ticket</li>
+        <li>✓ Festival Area</li>
+        <li>✓ Entry Access</li>
+      </ul>
+      <a href="#" class="btn btn-primary">Book Now</a>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- GALLERY -->
+<section>
+
+  <div class="section-title" data-aos="fade-up">
+    <h2>Concert Atmosphere</h2>
+    <p>Feel the magical night experience</p>
+  </div>
+
+  <div class="gallery">
+
+    <img data-aos="zoom-in" src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1200&auto=format&fit=crop">
+    <img data-aos="zoom-in" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1200&auto=format&fit=crop">
+    <img data-aos="zoom-in" src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1200&auto=format&fit=crop">
+    <img data-aos="zoom-in" src="https://images.unsplash.com/photo-1503095396549-807759245b35?q=80&w=1200&auto=format&fit=crop">
+
+  </div>
+
+</section>
+
+<!-- FAQ -->
+<section>
+
+  <div class="section-title" data-aos="fade-up">
+    <h2>Frequently Asked Questions</h2>
+    <p>Important information before attending</p>
+  </div>
+
+  <div class="faq">
+
+    <div class="faq-item">
+      <div class="faq-question">Are tickets refundable?</div>
+      <div class="faq-answer">
+        Refunds follow promoter policies if the show is canceled.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Can I buy multiple tickets?</div>
+      <div class="faq-answer">
+        Maximum purchase is 5 tickets per transaction per category.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Do I need valid ID?</div>
+      <div class="faq-answer">
+        Yes, ticket names must match a valid government ID.
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+  <h2>Brian McKnight Live In Medan</h2>
+  <br>
+
+  <p>
+    Promoted by MEG Entertainment • Ticketing Partner ADDTIX
+  </p>
+
+  <br>
+
+  <p style="opacity:.5">
+    © 2025 All Rights Reserved
+  </p>
+
+</footer>
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+
+AOS.init({
+  duration:1200,
+  once:false
+});
+
+
+// FAQ
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    q.parentElement.classList.toggle('active');
+  });
+});
+
+
+// COUNTDOWN
+const targetDate = new Date("July 12, 2025 20:00:00").getTime();
+
+setInterval(() => {
+
+  const now = new Date().getTime();
+  const distance = targetDate - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("days").innerHTML = days;
+  document.getElementById("hours").innerHTML = hours;
+  document.getElementById("minutes").innerHTML = minutes;
+  document.getElementById("seconds").innerHTML = seconds;
+
+},1000);
+
+</script>
+
+</body>
+  </html>
